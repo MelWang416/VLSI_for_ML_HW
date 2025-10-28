@@ -62,16 +62,48 @@ endfunction
 
 
 function [3:0] x_bin ;
+    input integer act;
+    begin
+	    if(act>7) begin
+		    x_bin[3] = 1;
+		    act = act - 8;
+	    end
+	    else x_bin[3] = 0;
 
-...
+	    if(act>3) begin
+		    x_bin[2] = 1;
+		    act = act - 4;
+	    end
+	    else x_bin[2] = 0;
+
+	    if(act>1) begin
+		    x_bin[1] = 1;
+		    act = act -2;
+	    end
+	    else x_bin[1] = 0;
+
+	    if(act>0) begin
+		    x_bin[0] = 1;
+		    act = act - 1;
+            end
+	    else x_bin[0] = 0;
+    end
 
 endfunction
 
 
 // Below function is for verification
-function [psum_bw-1:0] mac_predicted;
-  
-...
+function [15:0] mac_predicted;
+	input unsigned [3:0] a;
+	input signed   [3:0] b;
+	input signed   [15:0] c;
+	reg signed [4:0] a_invert;
+        
+	begin	
+	a_invert[4] = 0;
+	a_invert[3:0] = a;
+	mac_predicted = b * a_invert + c;
+        end
 
 endfunction
 
