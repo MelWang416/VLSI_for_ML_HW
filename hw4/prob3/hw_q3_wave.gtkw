@@ -1,0 +1,88 @@
+[*]
+[*] GTKWave Analyzer v3.3.118 (w)1999-2023 BSI
+[*] Wed Oct 29 04:31:00 2025
+[*]
+[dumpfile] "/home/linux/ieng6/ECE284_FA25_A00/ziw161/ece284_hw_hw/hw4/prob3/mac_tb.vcd"
+[dumpfile_mtime] "Wed Oct 29 04:11:40 2025"
+[dumpfile_size] 7165
+[savefile] "/home/linux/ieng6/ECE284_FA25_A00/ziw161/ece284_hw_hw/hw4/prob3/hw_q3_wave.gtkw"
+[timestart] 0
+[size] 1920 928
+[pos] -1 -1
+*-2.911406 23 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] mac_tb.
+[treeopen] mac_tb.mac_wrapper_instance.
+[sst_width] 229
+[signals_width] 213
+[sst_expanded] 1
+[sst_vpaned_height] 253
+@28
+mac_tb.clk
+@24
+mac_tb.a0[3:0]
+@420
+mac_tb.b0[3:0]
+@24
+mac_tb.a1[3:0]
+@420
+mac_tb.b1[3:0]
+mac_tb.mac_predicted.pd_0[7:0]
+mac_tb.mac_predicted.pd_1[7:0]
+@24
+mac_tb.a2[3:0]
+@420
+mac_tb.b2[3:0]
+@24
+mac_tb.a3[3:0]
+@420
+mac_tb.b3[3:0]
+mac_tb.mac_predicted.pd_2[7:0]
+mac_tb.mac_predicted.pd_3[7:0]
+mac_tb.mac_predicted.sum_0[8:0]
+mac_tb.mac_predicted.sum_1[8:0]
+mac_tb.c[15:0]
+mac_tb.expected_out[15:0]
+mac_tb.psum_out[15:0]
+@24
+mac_tb.mac_wrapper_instance.mac_instance.a0[3:0]
+@420
+mac_tb.mac_wrapper_instance.mac_instance.b0[3:0]
+mac_tb.mac_wrapper_instance.mac_instance.a0_sign[4:0]
+mac_tb.mac_wrapper_instance.mac_instance.b0_sign[4:0]
+mac_tb.mac_wrapper_instance.mac_instance.pd_0_mac[7:0]
+@24
+mac_tb.mac_wrapper_instance.mac_instance.a1[3:0]
+@c00420
+mac_tb.mac_wrapper_instance.mac_instance.b1[3:0]
+@28
+(0)mac_tb.mac_wrapper_instance.mac_instance.b1[3:0]
+(1)mac_tb.mac_wrapper_instance.mac_instance.b1[3:0]
+(2)mac_tb.mac_wrapper_instance.mac_instance.b1[3:0]
+(3)mac_tb.mac_wrapper_instance.mac_instance.b1[3:0]
+@1401200
+-group_end
+@420
+mac_tb.mac_wrapper_instance.mac_instance.a1_sign[4:0]
+mac_tb.mac_wrapper_instance.mac_instance.b1_sign[4:0]
+mac_tb.mac_wrapper_instance.mac_instance.pd_1_mac[7:0]
+@24
+mac_tb.mac_wrapper_instance.mac_instance.a2[3:0]
+@420
+mac_tb.mac_wrapper_instance.mac_instance.b2[3:0]
+mac_tb.mac_wrapper_instance.mac_instance.a2_sign[4:0]
+mac_tb.mac_wrapper_instance.mac_instance.b2_sign[4:0]
+mac_tb.mac_wrapper_instance.mac_instance.pd_2_mac[7:0]
+@24
+mac_tb.mac_wrapper_instance.mac_instance.a3[3:0]
+@420
+mac_tb.mac_wrapper_instance.mac_instance.b3[3:0]
+mac_tb.mac_wrapper_instance.mac_instance.a3_sign[4:0]
+mac_tb.mac_wrapper_instance.mac_instance.b3_sign[4:0]
+mac_tb.mac_wrapper_instance.mac_instance.pd_3_mac[7:0]
+mac_tb.mac_wrapper_instance.mac_instance.c[15:0]
+mac_tb.mac_wrapper_instance.mac_instance.sum_0_mac[8:0]
+mac_tb.mac_wrapper_instance.mac_instance.sum_1_mac[8:0]
+@421
+mac_tb.mac_wrapper_instance.mac_instance.out[15:0]
+[pattern_trace] 1
+[pattern_trace] 0

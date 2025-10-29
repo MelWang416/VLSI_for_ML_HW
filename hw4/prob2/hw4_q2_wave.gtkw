@@ -1,0 +1,41 @@
+[*]
+[*] GTKWave Analyzer v3.3.118 (w)1999-2023 BSI
+[*] Tue Oct 28 05:13:04 2025
+[*]
+[dumpfile] "/home/linux/ieng6/ECE284_FA25_A00/ziw161/ece284_hw_hw/hw4/prob3/mac_tb.vcd"
+[dumpfile_mtime] "Tue Oct 28 04:56:42 2025"
+[dumpfile_size] 5203
+[savefile] "/home/linux/ieng6/ECE284_FA25_A00/ziw161/ece284_hw_hw/hw4/prob3/hw4_q2_wave.gtkw"
+[timestart] 5
+[size] 1920 928
+[pos] -1 -1
+*-2.496369 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] mac_tb.
+[treeopen] mac_tb.mac_wrapper_instance.
+[sst_width] 499
+[signals_width] 182
+[sst_expanded] 1
+[sst_vpaned_height] 253
+@28
+mac_tb.clk
+@24
+mac_tb.mac_wrapper_instance.a[3:0]
+@420
+mac_tb.mac_wrapper_instance.b[3:0]
+mac_tb.mac_wrapper_instance.c[15:0]
+mac_tb.mac_predicted.mac_predicted[15:0]
+@421
+mac_tb.expected_out[15:0]
+@24
+mac_tb.mac_wrapper_instance.a_q[3:0]
+mac_tb.mac_wrapper_instance.mac_instance.a[3:0]
+@420
+mac_tb.mac_wrapper_instance.mac_instance.a_sign[4:0]
+mac_tb.mac_wrapper_instance.b_q[3:0]
+mac_tb.mac_wrapper_instance.mac_instance.b[3:0]
+mac_tb.mac_wrapper_instance.mac_instance.b_sign[4:0]
+mac_tb.mac_wrapper_instance.c_q[15:0]
+mac_tb.mac_wrapper_instance.mac_instance.c[15:0]
+mac_tb.mac_wrapper_instance.mac_instance.out[15:0]
+[pattern_trace] 1
+[pattern_trace] 0
