@@ -10,7 +10,7 @@ module sram_tb;
 
 reg CLK = 0;
 reg [10:0]  A = 0;
-reg [31:0] D = 0;
+reg [31:0] D_tmp = 0;
 reg CEN_EXT = 0;
 reg CEN_Q ;
 reg WEN_EXT = 1;
@@ -19,7 +19,7 @@ wire [31:0] Q;
 
 integer x_file, x_scan_file ; // file_handler
 integer captured_data; 
-integer t, i, error;
+integer t, b, i, error;
 reg [31:0] D_2D [63:0];
 
 parameter run_cycle = 64;
@@ -30,7 +30,7 @@ sram_32b_w2048 sram_instance (
 	.CEN(CEN_Q), 
 	.WEN(WEN_Q),
         .A(A), 
-        .D(D), 
+        .D(D_tmp), 
         .Q(Q));
 
 
@@ -58,9 +58,11 @@ initial begin
     #20 CLK = 1'b0;
 
     A = A + 1;
-    x_scan_file = $fscanf(x_file,"%32b", D);
-    D_2D[t][31:0] = D;
-    $display("%2d-th written data is %h", t, D);
+    for (b = 31; b >=0; b = b-1) begin
+     x_scan_file = $fscanf(x_file,"%1b", D_tmp[b]);
+    end
+    D_2D[t] = D_tmp;
+    $display("%2d-th written data is %h", t, D_tmp);
     
     #20 CLK = 1'b1;
      
