@@ -1,0 +1,9 @@
+./sram_32b_w2048.v
+./core.v
+./sfu.v
+./code_tb.v
+./corelet.v
+./fifo.v
+./l0.v
+./mac.v
+./ofifo.v

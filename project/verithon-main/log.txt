@@ -1,0 +1,42 @@
+- Nov 27th, 21:00
+I first wrote the corelet module. The corelet wrapped the L0 buffer, 2-D MAC array, 
+and OFIFO, and the top module wrapped the corelet together with the activation, 
+weight, and psum SRAMs.
+At this point, the module hierarchy looked like: top → corelet → mac_array.
+
+After studying the provided core_tb.v testbench more carefully, I realized that the 
+expected design structure was different. The testbench interacts directly with a 
+core module, not with the top or corelet modules. Because of this, I rewrote the 
+architecture so that core.v itself contains internal XMEM, internal PSUM memory, 
+weight and activation registers, the MAC array, the SFP unit, and the OFIFO.
+This makes the interface fully compatible with the testbench.
+
+- Nov 28th, 4:00
+I added support for both 2-bit and 4-bit weight modes. The new mode_w bit (intended 
+to be inst[34]) tells the core whether weights should be interpreted as 4-bit signed 
+values or as packed 2-bit signed values. In 4-bit mode, weights are used directly. 
+In 2-bit mode, only the lower 16 bits of xmem are used, where eight 2-bit weights 
+are packed. Each 2-bit weight is sign-extended to 4 bits at load time. Only core.v 
+needed to be modified to support this behavior; all other modules remain unchanged.
+
+Here's the condition:
+1. When operating in 2-bit mode, only xmem[15:0] are used. This is acceptable as 
+long as the weight files follow the expected packing format.
+2. 2-bit weights are interpreted as signed values in the range −2 to +1, which 
+matches two’s-complement semantics.
+3. weight expansion happens only during l0_wr; if the mode changes afterward, the 
+system will not recompute the expanded weights.
+4. Activations are assumed to be unsigned and zero-extended when forming MAC inputs.
+5. my current core expects a 35-bit inst input (inst[34:0]) that includes mode_w, 
+but the provided testbench only supplies inst[33:0]. This mismatch can be resolved 
+by adding a separate mode input or redefining inst, depending on what approach is 
+preferred.
+
+- Nov 28th, 18:00
+We use OFIFO as a psum buffer: MAC psums are written into OFIFO, then read by the SFP 
+module, which performs accumulation and ReLU and writes the resulting psums into the 
+ping-pong PSUM SRAM. Final activations are output directly from SFP.
+
+I also modified the top module inputs so that it takes inst[33:0] as input and decode 
+it into signals. But the input/output signals in top modules are not matching the 
+testbench signals right now.
