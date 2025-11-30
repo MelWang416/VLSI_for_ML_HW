@@ -18,12 +18,12 @@ module l0 (clk, in, out, rd, wr, o_full, reset, o_ready);
   wire [row-1:0] full;
   reg [row-1:0] rd_en;
 
-  reg [2:0] rr_ptr; // pointer
+  //reg [2:0] rr_ptr; // pointer
   
   genvar i;
 
-  assign o_ready = |full;
-  assign o_full  = ~(|full);
+  assign o_ready = !full[0] && !full[1] && !full[2] && !full[3] && !full[4] && !full[5] && !full[6] && !full[7];
+  assign o_full  = |full;
 
 
   for (i=0; i<row ; i=i+1) begin : row_num
@@ -43,7 +43,7 @@ module l0 (clk, in, out, rd, wr, o_full, reset, o_ready);
   always @ (posedge clk) begin
    if (reset) begin
       rd_en <= 8'b00000000;
-      rr_ptr <= 3'b000;
+      //rr_ptr <= 3'b000;
    end
    else
 
@@ -56,11 +56,11 @@ module l0 (clk, in, out, rd, wr, o_full, reset, o_ready);
       ///////////////////////////////////////////////////////
       
       if (rd==1'b1) begin
-	      rd_en <= 8'b00000000;
-	      rd_en[rr_ptr] <= 1'b1;
-	      rr_ptr <= rr_ptr + 1;
+	      rd_en <= {rd_en[6:0], 1'b1};
+	      //rd_en[rr_ptr] <= 1'b1;
+	      //rr_ptr <= rr_ptr + 1;
       end else begin
-	      rd_en <= 8'b00000000;
+	      rd_en <= {rd_en[6:0], 1'b0};
       end
 
     end

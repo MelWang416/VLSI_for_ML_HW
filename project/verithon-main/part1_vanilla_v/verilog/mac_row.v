@@ -33,20 +33,8 @@ module mac_row (clk, out_s, in_w, in_n, valid, inst_w, reset);
 	 .inst_e(inst_chain[2*(i+1)-1:2*i]),
 	 .in_n(in_n[psum_bw*i-1:psum_bw*(i-1)]),
 	 .out_s(out_s[psum_bw*i-1:psum_bw*(i-1)]));
+         assign valid[i-1] = inst_chain[2*(i+1)-1];
   end
 
-    always @ (posedge clk or posedge reset) begin
-	  if (reset) begin
-		  valid_reg <= {col{1'b0}};
-	  end
-	  else if (inst_w[1]) begin
-		  valid_reg <= {col{1'b1}};
-	  end
-	  else
-		  valid_reg <= {col{1'b0}};
-    end
-
-//  assign valid = {col{inst_w[1]}};
-    assign valid = valid_reg;
 
 endmodule

@@ -218,36 +218,36 @@ initial begin
 
     /////// Kernel data writing to L0 ///////
     A_xmem = 11'b10000000000;
-    l0_wr = 1;
+    
 
     for (t=0; t<col; t=t+1) begin  
-
-      #0.5 clk = 1'b0;
-      //w_scan_file = $fscanf(w_file,"%32b", D_xmem);
       WEN_xmem = 1; CEN_xmem = 0;
-      
       if (t>0) A_xmem = A_xmem + 1; 
-      #0.5 clk = 1'b1;  
+      #0.5 clk = 1'b0;
+      #0.5 clk = 1'b1;
+      l0_wr = 1;  
 
     end
 
-    l0_wr = 0;
 
-    #0.5 clk = 1'b0;  WEN_xmem = 1;  CEN_xmem = 1; A_xmem = 0;
+    #0.5 clk = 1'b0;  WEN_xmem = 1;  CEN_xmem = 1; A_xmem = 0; l0_wr = 0;
     #0.5 clk = 1'b1; 
     /////////////////////////////////////
-
+    #0.5 clk = 1'b0;
+    #0.5 clk = 1'b1;
 
 
     /////// Kernel loading to PEs ///////
-    l0_rd = 1; load = 1;
+    load = 1;
 
     for (t=0; t<col+row; t=t+1) begin
+      l0_rd = 1;
       #0.5 clk = 1'b0;
       #0.5 clk = 1'b1;
+      
     end
 
-    l0_rd = 0; load = 0;
+    //l0_rd = 0; load = 0;
     /////////////////////////////////////
   
 
@@ -267,26 +267,22 @@ initial begin
 
     /////// Activation data writing to L0 ///////
     A_xmem = 11'b00000000000;
-    l0_wr = 1;
 
     for (t=0; t<col; t=t+1) begin  
-
-      #0.5 clk = 1'b0;
-      //w_scan_file = $fscanf(w_file,"%32b", D_xmem);
       WEN_xmem = 1; CEN_xmem = 0;
-      
       if (t>0) A_xmem = A_xmem + 1; 
-      #0.5 clk = 1'b1;  
+      #0.5 clk = 1'b0; 
+      #0.5 clk = 1'b1;
+      l0_wr = 1; 
 
     end
 
-    l0_wr = 0;
-
-    #0.5 clk = 1'b0;  WEN_xmem = 1;  CEN_xmem = 1; A_xmem = 0;
+    #0.5 clk = 1'b0;  WEN_xmem = 1;  CEN_xmem = 1; A_xmem = 0; l0_wr = 0;
     #0.5 clk = 1'b1; 
 
     /////////////////////////////////////
-
+    #0.5 clk = 1'b0;
+    #0.5 clk = 1'b1;
 
 
     /////// Execution ///////

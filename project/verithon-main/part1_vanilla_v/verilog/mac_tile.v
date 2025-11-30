@@ -41,18 +41,20 @@ always @ (posedge clk or posedge reset) begin
 		inst_q <= 2'b00;
 		load_ready_q <= 1'b1;
 	end
-
-	inst_q <= inst_w;
-
-	if (inst_w[0] && load_ready_q) begin
+        else begin
+	  inst_q[1] <= inst_w[1];
+          c_q <= in_n;
+	  if(inst_w[1] | inst_w[0]) begin
+		a_q <= in_w;
+          end
+	  if (inst_w[0] && load_ready_q) begin
 		b_q <= in_w;
 		load_ready_q <= 1'b0;
-	end
-
-	if (inst_w[1] && load_ready_q) begin
-		a_q <= in_w;
-		c_q <= in_n;
-	end
+	  end
+	  if (!load_ready_q) begin
+	       inst_q[0] <= inst_w[0];
+	  end
+        end
 
 end
 

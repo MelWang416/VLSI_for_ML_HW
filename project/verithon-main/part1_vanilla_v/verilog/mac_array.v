@@ -40,22 +40,14 @@ module mac_array (clk, reset, out_s, in_w, in_n, inst_w, valid);
 
   integer j;
 
-  always @ (posedge clk or posedge reset) begin
-   // inst_w flows to row0 to row7
-	if (reset) begin
-		for (j=0; j < row; j=j+1) begin
-			inst_w_q[j] <= 2'b00;
-		end
-	end
-	else begin
-		inst_w_q[0] <= inst_w;
-		for (j=1; j < row; j=j+1) begin
-			inst_w_q[j] <= inst_w_q[j-1];
-		end
-	end
-
-  end
-
-
-
-endmodule
+  always@(posedge clk) begin
+     inst_w_q[0] <= inst_w;
+     inst_w_q[1] <= inst_w_q[0];
+     inst_w_q[2] <= inst_w_q[1];
+     inst_w_q[3] <= inst_w_q[2];
+     inst_w_q[4] <= inst_w_q[3];
+     inst_w_q[5] <= inst_w_q[4];
+     inst_w_q[6] <= inst_w_q[5];
+     inst_w_q[7] <= inst_w_q[6];
+  end 
+  endmodule
